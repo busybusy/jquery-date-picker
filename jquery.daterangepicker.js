@@ -1305,7 +1305,7 @@
 							break;
 						}
 						if (timeTmp > opt.start) timeTmp -= 86400000;
-						if (timeTmp < opt.start) timeTmp += 86400000;
+						else if (timeTmp < opt.start) timeTmp += 86400000;
 					}
 					if (!valid) return false;
 				}
