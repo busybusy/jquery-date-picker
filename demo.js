@@ -102,7 +102,18 @@ $(function()
 			enabled: true
 		}
 	});
-	
+		$('#date-range1-1').dateRangePicker(
+	{
+		startOfWeek: 'monday',
+		separator : ' ~ ',
+		format: 'DD.MM.YYYY HH:mm',
+		autoClose: false,
+		time: {
+			enabled: true
+		},
+		defaultTime: moment().startOf('day').toDate(),
+		defaultEndTime: moment().endOf('day').toDate()
+	});
 	$('#date-range2').dateRangePicker();
 
 	$('#date-range3').dateRangePicker(
@@ -338,6 +349,12 @@ $(function()
 		$('#date-range16').data('dateRangePicker').destroy();
 	});
 
+	$('#date-range16-reset').click(function(evt)
+    {
+		evt.stopPropagation();
+		$('#date-range16').data('dateRangePicker').resetMonthsView();
+    });
+
 	$('#date-range17').dateRangePicker(
 	{
 		stickyMonths: true,
@@ -434,6 +451,19 @@ $(function()
 			var _class = '';
 			var _tooltip = valid ? '' : 'sold out';
 			return [valid,_class,_tooltip];
+		}
+	});
+
+
+	$('#date-range50').dateRangePicker(
+	{
+		customOpenAnimation: function(cb)
+		{
+			$(this).fadeIn(300, cb);
+		},
+		customCloseAnimation: function(cb)
+		{
+			$(this).fadeOut(300, cb);
 		}
 	});
 
