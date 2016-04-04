@@ -1330,26 +1330,6 @@
 				//check selectForward and selectBackward
 				if (opt.selectForward && time < opt.start ) return false;
 				if (opt.selectBackward && time > opt.start) return false;
-
-				//check disabled days
-				if (opt.beforeShowDay && typeof opt.beforeShowDay == 'function')
-				{
-					var valid = true;
-					var timeTmp = time;
-					while( countDays(timeTmp, opt.start) > 1 )
-					{
-						var arr = opt.beforeShowDay( new Date(timeTmp) );
-						if (!arr[0])
-						{
-							valid = false;
-							break;
-						}
-						if (Math.abs(timeTmp - opt.start) < 86400000) break;
-						if (timeTmp > opt.start) timeTmp -= 86400000;
-						else if (timeTmp < opt.start) timeTmp += 86400000;
-					}
-					if (!valid) return false;
-				}
 			}
 			return true;
 		}
